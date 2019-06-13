@@ -16,13 +16,16 @@ public class Rectangle {
   public final double maxX;
   public final double maxY;
 
+  public static Rectangle of(double x, double y, double width, double height) {
+    return Rectangle.of(x, y, width, height);
+  }
   /**
    * @param x left most x location
    * @param y top most y location
    * @param width horizontal size of rectangle when aligned
    * @param height vertical size of rectangle when aligned
    */
-  public Rectangle(double x, double y, double width, double height) {
+  protected Rectangle(double x, double y, double width, double height) {
     Preconditions.checkArgument(width >= 0 && height >= 0, "width and height must be non-negative");
     this.x = x;
     this.y = y;
@@ -81,7 +84,7 @@ public class Rectangle {
     double x2 = Math.max(maxX, newX);
     double y1 = Math.min(y, newY);
     double y2 = Math.max(maxY, newY);
-    return new Rectangle(x1, y1, x2 - x1, y2 - y1);
+    return Rectangle.of(x1, y1, x2 - x1, y2 - y1);
   }
 
   @Override

@@ -12,6 +12,43 @@ public class ForceObject<T> {
 
   private static final Logger log = LoggerFactory.getLogger(ForceObject.class);
 
+  public static class Builder<T> {
+    protected double mass = 1;
+    protected Point p = Point.ORIGIN;
+    protected Point f = Point.ORIGIN;
+    protected T element;
+
+    public Builder<T> element(T element) {
+      this.element = element;
+      return this;
+    }
+
+    public Builder<T> point(Point p) {
+      this.p = p;
+      return this;
+    }
+
+    public Builder<T> force(Point f) {
+      this.f = f;
+      return this;
+    }
+
+    public Builder<T> mass(double mass) {
+      this.mass = mass;
+      return this;
+    }
+
+
+    public ForceObject<T> build() {
+      return new ForceObject(this);
+    }
+  }
+
+  public static <T> Builder<T> builder() {
+    return new Builder<>();
+  }
+
+
   /** location of p */
   public final Point p;
 
@@ -23,22 +60,26 @@ public class ForceObject<T> {
 
   private final T element;
 
-  public ForceObject(T element, Point p, double mass) {
+  ForceObject(Builder<T> builder) {
+    this(builder.element, builder.p, builder.mass);
+  }
+
+  private ForceObject(T element, Point p, double mass) {
     this.element = element;
     this.p = p;
     this.f = Point.ORIGIN;
     this.mass = mass;
   }
 
-  public ForceObject(T element, Point p) {
+  private ForceObject(T element, Point p) {
     this(element, p, 1);
   }
 
-  public ForceObject(T element, double x, double y) {
+  private ForceObject(T element, double x, double y) {
     this(element, Point.of(x, y), 1);
   }
 
-  public ForceObject(T element, double x, double y, double mass) {
+  private ForceObject(T element, double x, double y, double mass) {
     this.element = element;
     p = Point.of(x, y);
     this.mass = mass;

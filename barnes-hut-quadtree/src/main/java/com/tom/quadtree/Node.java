@@ -41,7 +41,7 @@ public class Node<T> {
     protected Rectangle area;
 
     public Node.Builder<T> withArea(double x, double y, double width, double height) {
-      return withArea(new Rectangle(x, y, width, height));
+      return withArea(Rectangle.of(x, y, width, height));
     }
 
     public Node.Builder<T> withArea(Rectangle area) {
@@ -68,7 +68,7 @@ public class Node<T> {
   }
 
   private Node(double x, double y, double width, double height, double theta) {
-    this(new Rectangle(x, y, width, height), theta);
+    this(Rectangle.of(x, y, width, height), theta);
   }
 
   private Node(Rectangle r, double theta) {

@@ -28,7 +28,7 @@ public class BarnesHutQuadTreeTests {
    */
   @Test
   public void testOne() {
-    ForceObject<String> forceObjectOne = new ForceObject("A", 10, 10);
+    ForceObject<String> forceObjectOne = ForceObject.<String>builder().element("A").point(Point.of(10, 10)).build();
     ForceObject<String> forceObjectTwo = new ForceObject("B", 10, 10);
     ForceObject<String> forceObjectThree = new ForceObject("C", 10, 10);
     tree.insert(forceObjectOne);

@@ -30,12 +30,12 @@ public class BarnesHutQuadTree<T> {
     }
 
     public BarnesHutQuadTree.Builder withBounds(double x, double y, double width, double height) {
-      withBounds(new Rectangle(x, y, width, height));
+      withBounds(Rectangle.of(x, y, width, height));
       return this;
     }
 
     public BarnesHutQuadTree.Builder withBounds(double width, double height) {
-      withBounds(new Rectangle(0, 0, width, height));
+      withBounds(Rectangle.of(0, 0, width, height));
       return this;
     }
 
@@ -110,7 +110,8 @@ public class BarnesHutQuadTree<T> {
     clear();
     synchronized (lock) {
       for (Map.Entry<T, Point> entry : locations.entrySet()) {
-        ForceObject<T> forceObject = new ForceObject<T>(entry.getKey(), entry.getValue());
+        ForceObject<T> forceObject = ForceObject.<T>builder()
+                .element(entry.getKey()).point(entry.getValue()).build();
         insert(forceObject);
       }
     }
