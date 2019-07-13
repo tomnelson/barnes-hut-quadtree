@@ -24,22 +24,22 @@ public class BarnesHutQuadTree<T> {
     protected double theta = Node.DEFAULT_THETA;
     protected Rectangle bounds;
 
-    public BarnesHutQuadTree.Builder withBounds(Rectangle bounds) {
+    public BarnesHutQuadTree.Builder bounds(Rectangle bounds) {
       this.bounds = bounds;
       return this;
     }
 
-    public BarnesHutQuadTree.Builder withBounds(double x, double y, double width, double height) {
-      withBounds(new Rectangle(x, y, width, height));
+    public BarnesHutQuadTree.Builder bounds(double x, double y, double width, double height) {
+      bounds(new Rectangle(x, y, width, height));
       return this;
     }
 
-    public BarnesHutQuadTree.Builder withBounds(double width, double height) {
-      withBounds(new Rectangle(0, 0, width, height));
+    public BarnesHutQuadTree.Builder bounds(double width, double height) {
+      bounds(new Rectangle(0, 0, width, height));
       return this;
     }
 
-    public BarnesHutQuadTree.Builder withTheta(double theta) {
+    public BarnesHutQuadTree.Builder theta(double theta) {
       this.theta = theta;
       return this;
     }
