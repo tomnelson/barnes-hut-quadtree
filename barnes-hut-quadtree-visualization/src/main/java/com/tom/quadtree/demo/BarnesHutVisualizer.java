@@ -44,7 +44,7 @@ public class BarnesHutVisualizer extends JPanel {
     elements.put("C", Point.of(100, 100));
     elements.put("D", Point.of(500, 100));
 
-    tree = BarnesHutQuadTree.builder().withBounds(600, 600).build();
+    tree = BarnesHutQuadTree.builder().bounds(600, 600).build();
     tree.rebuild(elements);
 
     JPanel drawingPanel =
@@ -120,7 +120,7 @@ public class BarnesHutVisualizer extends JPanel {
   private void clearNetwork() {
     elements.clear();
     stuffToDraw.clear();
-    tree = BarnesHutQuadTree.builder().withBounds(getWidth(), getHeight()).build();
+    tree = BarnesHutQuadTree.builder().bounds(getWidth(), getHeight()).build();
     tree.rebuild(elements);
     repaint();
   }

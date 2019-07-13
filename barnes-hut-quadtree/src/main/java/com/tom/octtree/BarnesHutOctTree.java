@@ -23,23 +23,23 @@ public class BarnesHutOctTree<T> {
     protected double theta = Node.DEFAULT_THETA;
     protected Box bounds;
 
-    public BarnesHutOctTree.Builder withBounds(Box bounds) {
+    public BarnesHutOctTree.Builder bounds(Box bounds) {
       this.bounds = bounds;
       return this;
     }
 
-    public BarnesHutOctTree.Builder withBounds(
+    public BarnesHutOctTree.Builder bounds(
         double x, double y, double z, double width, double height, double depth) {
-      withBounds(new Box(x, y, z, width, height, depth));
+      bounds(new Box(x, y, z, width, height, depth));
       return this;
     }
 
-    public BarnesHutOctTree.Builder withBounds(double width, double height, double depth) {
-      withBounds(new Box(0, 0, 0, width, height, depth));
+    public BarnesHutOctTree.Builder bounds(double width, double height, double depth) {
+      bounds(new Box(0, 0, 0, width, height, depth));
       return this;
     }
 
-    public BarnesHutOctTree.Builder withTheta(double theta) {
+    public BarnesHutOctTree.Builder theta(double theta) {
       this.theta = theta;
       return this;
     }
