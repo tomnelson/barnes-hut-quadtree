@@ -1,7 +1,8 @@
 package com.tom.octtree;
 
 import com.google.common.base.Preconditions;
-import java.util.Map;
+import java.util.Collection;
+import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,13 +98,31 @@ public class BarnesHutOctTree<T> {
     }
   }
 
-  public void rebuild(Map<T, Point> locations) {
+  /**
+   * rebuild the quad tree with the nodes and location mappings of the passed LayoutModel
+   *
+   * @param elements elements to pass to ForceObjects
+   * @param locations function to get locations from elements
+   */
+  public void rebuild(Collection<T> elements, Function<T, Point> locations) {
     clear();
     synchronized (lock) {
-      for (Map.Entry<T, Point> entry : locations.entrySet()) {
-        ForceObject<T> forceObject = new ForceObject<T>(entry.getKey(), entry.getValue());
-        insert(forceObject);
-      }
+      elements.forEach(element -> insert(new ForceObject(element, locations.apply(element))));
+    }
+  }
+
+  /**
+   * @param elements elements to pass to ForceObjects
+   * @param masses funtcion to supply masses for elements
+   * @param locations function to get locations from elements
+   */
+  public void rebuild(
+      Collection<T> elements, Function<T, Double> masses, Function<T, Point> locations) {
+    clear();
+    synchronized (lock) {
+      elements.forEach(
+          element ->
+              insert(new ForceObject(element, locations.apply(element), masses.apply(element))));
     }
   }
 
