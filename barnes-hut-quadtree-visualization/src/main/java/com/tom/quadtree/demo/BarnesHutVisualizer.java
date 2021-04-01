@@ -1,7 +1,5 @@
 package com.tom.quadtree.demo;
 
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.tom.quadtree.BarnesHutQuadTree;
 import com.tom.quadtree.ForceObject;
 import com.tom.quadtree.Node;
@@ -15,6 +13,8 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import javax.swing.*;
 import org.slf4j.Logger;
@@ -32,9 +32,9 @@ public class BarnesHutVisualizer extends JPanel {
 
   BarnesHutQuadTree<String> tree;
 
-  Map<String, Point> elements = Maps.newHashMap();
+  Map<String, Point> elements = new HashMap<>();
 
-  Collection<Shape> stuffToDraw = Sets.newHashSet();
+  Collection<Shape> stuffToDraw = new HashSet<>();
 
   public BarnesHutVisualizer() {
     setLayout(new BorderLayout());

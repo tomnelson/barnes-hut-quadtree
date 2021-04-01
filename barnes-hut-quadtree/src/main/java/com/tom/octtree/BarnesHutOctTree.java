@@ -1,6 +1,5 @@
 package com.tom.octtree;
 
-import com.google.common.base.Preconditions;
 import java.util.Collection;
 import java.util.function.Function;
 import org.slf4j.Logger;
@@ -127,7 +126,6 @@ public class BarnesHutOctTree<T> {
   }
 
   public void applyForcesTo(ForceObject<T> visitor) {
-    Preconditions.checkArgument(visitor != null, "Cannot apply forces to a null ForceObject");
     if (root != null && root.forceObject != visitor) {
       root.applyForcesTo(visitor);
     }
