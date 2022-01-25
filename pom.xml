@@ -22,8 +22,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <compiler.plugin.version>3.5.1</compiler.plugin.version>
     <java.version>1.8</java.version>
-    <version.slf4j>1.7.25</version.slf4j>
-    <version.logback>1.2.3</version.logback>
+    <version.slf4j>1.7.32</version.slf4j>
+    <version.logback>1.2.10</version.logback>
     <junit.version>4.13.1</junit.version>
     <google-java-format.version>1.3</google-java-format.version>
     <fmt.plugin.version>1.8.0</fmt.plugin.version>
